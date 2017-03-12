@@ -1,0 +1,19 @@
+﻿@using MovieStore.WebUI.Models
+@using MovieStore.WebUI.HtmlHelpers
+@model MovieListViewModel
+
+@{
+    ViewBag.Title = "Items";
+}
+
+
+@foreach (var p in @Model.Movies)
+{
+    @Html.Partial("MovieSummary", p)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
+
+
